@@ -3,33 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realidad Aumentda aves Icesi</title>
+    <title>Realidad Aumentada Aves Icesi</title>
     <link rel="icon" type="image/x-icon" href="/src/images/favicon-ave.png">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <!-- 
-      maybe to erase
-      
-      <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
-
-    -->
     <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
 
 </head>
 <body>
+
+  <script> const show = () => { document.querySelector("#euphonialaniir-vid").play(); }
+    AFRAME.registerComponent('euphonialaniir-vid', {
+        init: function () {
+          this.el.addEventListener('targetFound', event => {
+            console.log("target found");
+            document.querySelector("#euphonialaniir").play()
+            document.querySelector("#euphonialaniir-sound").play()
+            show();
+          });
+          this.el.addEventListener('targetLost', event => {
+            console.log("target lost");
+            document.querySelector("#euphonialaniir").pause()
+            document.querySelector("#euphonialaniir-sound").pause()
+          });
+        }
+      });
+    </script>
     
     <a-scene 
-    mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" 
+    mindar-image="imageTargetSrc: ./src/images/targets.mind;" 
     color-space="sRGB" 
     renderer="colorManagement: true, physicallyCorrectLights" 
     vr-mode-ui="enabled: false" 
     device-orientation-permission-ui="enabled: false">
 
         <a-assets>
-
             <video
-            id="euphoniaLaniir"
+            id="euphonialaniir"
             src="./src/videos/Azul y Amarillo.mp4"
             preload
             autoplay
@@ -38,24 +49,12 @@
           ></video>
           
           <video
-          id="euphoniaLaniir_sound"
+          id="euphonialaniir-sound"
           src="./src/videos/Azul y Amarillo.mp4"
           preload
-          autoplay
-          loop
-          
+          loop          
         ></video>
-        
 
-          <!-- Examples mind-ar
-          <img 
-          id="card" 
-          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
-          <a-asset-item 
-          id="avatarModel" 
-          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf">
-        </a-asset-item> 
-          -->
         </a-assets>
   
         <a-camera 
@@ -65,10 +64,10 @@
 
         <a-entity 
         mindar-image-target="targetIndex: 0" 
-        id="__euphoniaLaniir__" 
-        __euphoniaLaniir__>
+        id="euphonialaniir-vid" 
+        euphonialaniir-vid>
         <a-video
-        src="#euphoniaLanirr_sound"
+        src="#euphonialaniir-sound"
         position="0 0 0.2"
         rotation="0 0 0"
         width="0.0"
@@ -76,15 +75,15 @@
         >
         </a-video> 
         
-        <a-plane 
-        id="euphoniaLaniir_plane"
+         <a-plane 
+        id="euphonialaniir-plane"
         material="
         shader: chromakey; 
-        src: #euphoniaLanirr; 
+        src: #euphonialaniir; 
         color: 0.1 0.9 0.2" 
         position="0 0 -1" 
-        scale="1 1 1"
-        rotation="80 0 0"
+        scale="1.3 1.3 1.3"
+        rotation="0 0 0"
         
       ></a-plane>    
         </a-entity>
