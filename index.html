@@ -6,42 +6,88 @@
     <title>Realidad Aumentda aves Icesi</title>
     <link rel="icon" type="image/x-icon" href="/src/images/favicon-ave.png">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
+    <!-- 
+      maybe to erase
+      
+      <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
 
+    -->
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+
 </head>
 <body>
     
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene 
+    mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" 
+    color-space="sRGB" 
+    renderer="colorManagement: true, physicallyCorrectLights" 
+    vr-mode-ui="enabled: false" 
+    device-orientation-permission-ui="enabled: false">
+
         <a-assets>
 
             <video
             id="euphoniaLaniir"
+            src="./src/videos/Azul y Amarillo.mp4"
+            preload
+            autoplay
             loop
-            playsinline
-            webkit-playsinline
-          >
-            <!-- HEVC video for safari support -->
-            <source src="https://video-src-url/video.mov" type="video/mp4;codecs=hvc1">
-            <!-- WEBM video for chrome and firefox -->
-            <source src="/src/videos/Azul y Amarillo.webm" type="video/webm" />
-          </video>
+            muted
+          ></video>
           
+          <video
+          id="euphoniaLaniir_sound"
+          src="./src/videos/Azul y Amarillo.mp4"
+          preload
+          autoplay
+          loop
+          
+        ></video>
+        
 
-          <!-- Examples mind-ar -->
-          <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
-          <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+          <!-- Examples mind-ar
+          <img 
+          id="card" 
+          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+          <a-asset-item 
+          id="avatarModel" 
+          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf">
+        </a-asset-item> 
+          -->
         </a-assets>
   
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-        <a-entity mindar-image-target="targetIndex: 0"
-        material="shader: transparent-video; src: #videoId"
-        geometry="primitive: plane;
-                  width: 1;
-                  height: 1.8"
+        <a-camera 
+        position="0 0 0" 
+        look-controls="enabled: false">
+        </a-camera>
+
+        <a-entity 
+        mindar-image-target="targetIndex: 0" 
+        id="__euphoniaLaniir__" 
+        __euphoniaLaniir__>
+        <a-video
+        src="#euphoniaLanirr_sound"
+        position="0 0 0.2"
+        rotation="0 0 0"
+        width="0.0"
+        height="0.0"
         >
-        >
-                  </a-entity>
+        </a-video> 
+        
+        <a-plane 
+        id="euphoniaLaniir_plane"
+        material="
+        shader: chromakey; 
+        src: #euphoniaLanirr; 
+        color: 0.1 0.9 0.2" 
+        position="0 0 -1" 
+        scale="1 1 1"
+        rotation="80 0 0"
+        
+      ></a-plane>    
+        </a-entity>
       </a-scene>
 
 
