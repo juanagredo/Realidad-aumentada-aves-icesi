@@ -9,21 +9,11 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-
-
 </head>
 
 <body>
-
   <script>
-    const birds = ["euphonialaniir", "myiozetetescayanensis", "pitangusnsulphuratus"]
-    /*
-        const show = (birdId) => {
-          console.log(document.querySelector(`#${birdId}-vid`))
-          document.querySelector(`${birdId}-vid`).play();}
-
-    */
-
+    const birds = ["euphonialaniir", "myiozetetescayanensis", "pitangusnsulphuratus", "amazonaochrocephala"]
     birds.forEach(birdName => {
       AFRAME.registerComponent(`${birdName}-vid`, {
         init: function () {
@@ -41,45 +31,20 @@
         }
       })
     })
-
-
-
-    // const show = () => {
-    //   document.querySelector("#euphonialaniir-vid").play();
-    // }
-    // AFRAME.registerComponent('euphonialaniir-vid', {
-    //   init: function () {
-    //     this.el.addEventListener('targetFound', event => {
-    //       console.log("target found");
-    //       document.querySelector("#euphonialaniir").play()
-    //       document.querySelector("#euphonialaniir-sound").play()
-    //       show();
-    //     });
-    //     this.el.addEventListener('targetLost', event => {
-    //       console.log("target lost");
-    //       document.querySelector("#euphonialaniir").pause()
-    //       document.querySelector("#euphonialaniir-sound").pause()
-    //     });
-    //   }
-    // });
   </script>
 
   <a-scene mindar-image="imageTargetSrc: ./src/images/targets.mind;" color-space="sRGB"
     renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
-
-
     <a-assets>
       <!--euphonialaniir -->
-
 
       <video id="euphonialaniir" src="./src/videos/Azul y Amarillo.mp4" preload autoplay loop muted></video>
       <video id="euphonialaniir-sound" src="./src/videos/Azul y Amarillo.mp4" preload loop></video>
 
       <!--     myiozetetescayanensis -->
 
-      <video id="myiozetetescayanensis" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload autoplay loop
-        muted></video>
+      <video id="myiozetetescayanensis" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload autoplay loop muted></video>
       <video id="myiozetetescayanensis-sound" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload loop></video>
 
       <!--     pitangusnsulphuratus -->
@@ -89,8 +54,8 @@
 
       <!--     amazonaochrocephala -->
 
-      <video id="amazonaochrocephala" src="./src/videos/Azul y Amarillo.mp4" preload autoplay loop muted></video>
-      <video id="amazonaochrocephala-sound" src="./src/videos/Azul y Amarillo.mp4" preload loop></video> -->
+      <video id="amazonaochrocephala" src="./src/videos/Amazona ochrocephala.mp4" preload autoplay loop muted></video>
+      <video id="amazonaochrocephala-sound" src="./src/videos/Amazona ochrocephala.mp4" preload loop></video> -->
 
       <!--     euphonialaniir-->
     </a-assets>
@@ -134,9 +99,6 @@
         color: 0.1 0.9 0." position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
     </a-entity>
 
-
-
-
     <!--     amazonaochrocephala -->
 
     <a-entity mindar-image-target="targetIndex: 3" id="amazonaochrocephala-vid" amazonaochrocephala-vid>
@@ -146,30 +108,9 @@
       <a-plane id="amazonaochrocephala-plane" material="
         shader: chromakey; 
         src: #amazonaochrocephala; 
-        color: 0.1 0.9 0." position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
+        color: 1.0 0.0 0.1" position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
     </a-entity>
-
-
-
-    <!--     pitangusnsulphuratus 
-
-    <a-entity mindar-image-target="targetIndex: 3" id="pitangusnsulphuratus-vid" pitangusnsulphuratus-vid>
-      <a-video src="#pitangusnsulphuratus-sound" position="0 0 0.2" rotation="0 0 0" width="0.0" height="0.0">
-      </a-video>
-
-      <a-plane id="pitangusnsulphuratus-plane" material="
-        shader: chromakey; 
-        src: #pitangusnsulphuratus; 
-        color: 0.1 0.9 0." position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
-    </a-entity>-->
-
-
-
-
-
   </a-scene>
-
-
 </body>
 
 </html>
