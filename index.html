@@ -13,7 +13,9 @@
 
 <body>
   <script>
-    const birds = ["euphonialaniir", "myiozetetescayanensis", "pitangusnsulphuratus", "amazonaochrocephala"]
+    const birds = ["euphonialaniir", "myiozetetescayanensis", "pitangusnsulphuratus", "amazonaochrocephala",
+      "vanelluschilensis"
+    ]
     birds.forEach(birdName => {
       AFRAME.registerComponent(`${birdName}-vid`, {
         init: function () {
@@ -33,8 +35,8 @@
     })
   </script>
 
-  <a-scene mindar-image="imageTargetSrc: ./src/images/targets.mind; filterMinCF:0.000001; filterBeta: 0.5" color-space="sRGB"
-    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+  <a-scene mindar-image="imageTargetSrc: ./src/images/targets.mind; filterMinCF:0.000001; filterBeta: 0.5"
+    color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
       <!--euphonialaniir -->
@@ -44,7 +46,8 @@
 
       <!--     myiozetetescayanensis -->
 
-      <video id="myiozetetescayanensis" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload autoplay loop muted></video>
+      <video id="myiozetetescayanensis" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload autoplay loop
+        muted></video>
       <video id="myiozetetescayanensis-sound" src="./src/videos/Myiozetetes Cayanensis_1.mp4" preload loop></video>
 
       <!--     pitangusnsulphuratus -->
@@ -52,10 +55,15 @@
       <video id="pitangusnsulphuratus" src="./src/videos/PITANGUS SULPHURAUTS.mp4" preload autoplay loop muted></video>
       <video id="pitangusnsulphuratus-sound" src="./src/videos/PITANGUS SULPHURAUTS.mp4" preload loop></video>
 
+      <!--     vanelluschilensis -->
+
+      <video id="vanelluschilensis" src="./src/videos/vallenus.mp4" preload autoplay loop muted></video>
+      <video id="vanelluschilensis-sound" src="./src/videos/vallenus.mp4" preload loop></video>
+
       <!--     amazonaochrocephala -->
 
       <video id="amazonaochrocephala" src="./src/videos/Amazona ochrocephala.mp4" preload autoplay loop muted></video>
-      <video id="amazonaochrocephala-sound" src="./src/videos/Amazona ochrocephala.mp4" preload loop></video> 
+      <video id="amazonaochrocephala-sound" src="./src/videos/Amazona ochrocephala.mp4" preload loop></video>
 
       <!--     euphonialaniir-->
     </a-assets>
@@ -102,7 +110,7 @@
 
     <!--     troglodytesaedon -->
 
-<!-- 
+    <!-- 
     
     <a-entity mindar-image-target="targetIndex: 4" id="amazonaochrocephala-vid" amazonaochrocephala-vid>
       <a-video src="#amazonaochrocephala-sound" position="0 0 0.2" rotation="0 0 0" width="0.0" height="0.0">
@@ -113,6 +121,22 @@
         src: #amazonaochrocephala; 
         color: 1.0 0.0 0.1" position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
     </a-entity> -->
+
+
+    <!--     vanelluschilensis -->
+
+    
+    
+    <a-entity mindar-image-target="targetIndex: 4" id="vanelluschilensis-vid" vanelluschilensis-vid>
+      <a-video src="#vanelluschilensis-sound" position="0 0 0.2" rotation="0 0 0" width="0.0" height="0.0">
+      </a-video>
+
+      <a-plane id="vanelluschilensis-plane" material="
+        shader: chromakey; 
+        src: #vanelluschilensis; 
+        color: 0 0.7 0" position="0 0 -1" scale="1.3 1.3 1.3" rotation="0 0 0"></a-plane>
+    </a-entity> 
+
 
 
     <!--     amazonaochrocephala -->
